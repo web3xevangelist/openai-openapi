@@ -1,0 +1,32 @@
+description: Error object to convey error condition for response
+type: object
+required:
+  - error
+properties:
+  error:
+    type: object
+    required:
+      - message
+      - type
+    properties:
+      message:
+        type: string
+        minLength: 1
+        description: A brief description of the error.
+      type:
+        type: string
+        minLength: 1
+        description: The type of error.
+      param:
+        type: string
+        description: The parameter that caused the error.
+      code:
+        type: string
+        description: The code that identifies the error.
+x-examples:
+  example:
+    error:
+      message: 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.'
+      type: invalid_request_error
+      param: authorization
+      code: invalid_api_key
